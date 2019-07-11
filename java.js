@@ -15,6 +15,7 @@ $(document).ready(function () {
 });
 
 $(document).on("click", "#submit", function () {
+    
     console.log("Hey")
 });
 
