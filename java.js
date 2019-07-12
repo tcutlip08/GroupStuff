@@ -41,35 +41,58 @@ $(document).on("click", "#submit", function () {
     });
 });
 
-database.ref().on("child_added", function(snap) {
+// var displayDate = new date();
+// console.log(displayDate);
+
+database.ref().on("child_added", function (snap) {
 
     // if (snapshot.child("name").exists() && snapshot.child("highPrice").exists()) {
     //   highBidder = snapshot.val().highBidder;
     //   highPrice = parseInt(snapshot.val().highPrice);
     // }
 
-    console.log(snap.val());
+    console.log(snap.val().date);
+
+    // console.log(moment(snap.val().date, "YYYYMMDD").fromNow());
+    var month = calcMonthsWorked(snap);
+    console.log(month);
 
     var nameDiv = $("<div>");
     nameDiv.addClass("name").attr("data-name", snap.val().name).html(snap.val().name);
 
     var roleDiv = $("<div>");
     roleDiv.addClass("role").attr("data-role", snap.val().role).html(snap.val().role);
-    
+
     var monthlyRateDiv = $("<div>");
     monthlyRateDiv.addClass("monthlyRate").attr("data-monthlyRate", snap.val().monthlyRate).html(snap.val().monthlyRate);
 
     var dateDiv = $("<div>");
     dateDiv.addClass("name").attr("data-date", snap.val().date).html(snap.val().date);
-    
-    $("#displayName").prepend(nameDiv);
-    $("#displayRole").prepend(roleDiv);
-    $("#displayMonthlyRate").prepend(monthlyRateDiv);
-    $("#displayDate").prepend(dateDiv);
 
-  }, function(errorObject) {
+    var monthDiv = $("<div>");
+    monthDiv.addClass("month").attr("data-month", month).html(month);
+
+    $("#displayName").append(nameDiv);
+    $("#displayRole").append(roleDiv);
+    $("#displayMonthlyRate").append(monthlyRateDiv);
+    $("#displayDate").append(dateDiv);
+    $("#displayMonthsWorked").append(monthDiv);
+
+}, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
-  });
+});
+
+function calcMonthsWorked(snap) {
+    var now = moment(new Date()); //todays date
+    var end = moment(snap.val().date); // another date
+    var duration = moment.duration(now.diff(end));
+    var months = parseInt(duration.asMonths());
+    var years = parseInt(duration.asYears());
+    console.log("month: " + months);
+    console.log("year: " + years);
+
+    return months;
+}
 
 // database.ref().push({
 //     highBidder: bidderName,
