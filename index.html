@@ -48,13 +48,27 @@
                                         <th scope="col">Monthly Rate ($)</th>
                                         <th scope="col">Total Billed ($)</th>
                                     </tr>
-                                </thead>
                                 <tbody>
-
+                                    <tr>
+                                        <td id="displayName"></td>
+                                        <td id="displayRole"></td>
+                                        <td id="displayDate"></td>
+                                        <td id="displayMonthsWorked"></td>
+                                        <td id="displayMonthlyRate"></td>
+                                        <td id="displayTotalBilled"></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                    <!-- <div class="row">
+                        <div class="col" id="displayName"></div>
+                        <div class="col" id="displayRole"></div>
+                        <div class="col" id="displayDate"></div>
+                        <div class="col" id="displayMonthsWorked"></div>
+                        <div class="col" id="displayMonthlyRate"></div>
+                        <div class="col" id="displayTotalBilled"></div>
+                    </div> -->
                 </div>
                 <form>
                     <label for="eName">Employee Name</label>
@@ -64,7 +78,7 @@
                     <label for="eMR">Role</label>
                     <input type="number" id="eMR" name="eMR">
                     <label for="eDt">Role</label>
-                    <input type="number" id="eDt" name="eMR">
+                    <input type="date" id="eDt" name="eMR">
                     <button type="button" id="submit">Submit</button>
                 </form>
             </div>
