@@ -1,3 +1,22 @@
 body{
     background-color: aqua;
 }
+.jumbotron {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+#employee-tableHeading{
+    background: gray;
+    
+    width: 100%;
+}
+#employee-table{
+    
+    width: 80%;
+    
+    position: relative;
+    margin-left: 68px;
+    border: black 2px solid;
+}
